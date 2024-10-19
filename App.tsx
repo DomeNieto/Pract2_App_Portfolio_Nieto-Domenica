@@ -1,6 +1,6 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
-import QRCode from "react-native-qrcode-svg";
+import MyQRCode from "react-native-qrcode-svg";
 import Header from "./components/Header/Header";
 import PersonalInfo from "./components/PersonalInfo/PersonalInfo";
 
@@ -12,15 +12,7 @@ export default function App() {
         <Header setDisplayMyQR={setDisplayMyQR} />
       </View>
       <View style={styles.contentContainer}>
-        {displayMyQR ? (
-          <PersonalInfo />
-        ) : (
-          <View style={styles.bodystails}>
-            <View style={styles.CentrarcodigoQR}>
-              <QRCode value="https://github.com/adhernea" />
-            </View>
-          </View>
-        )}
+        {displayMyQR ? <PersonalInfo /> : <MyQRCode />}
       </View>
     </View>
   );
@@ -43,20 +35,5 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
-  },
-  bodystails: {
-    width: "100%",
-    borderWidth: 2,
-    borderColor: "black",
-    alignItems: "center",
-    justifyContent: "space-between",
-    height: "85%",
-  },
-  CentrarcodigoQR: {
-    justifyContent: "center",
-    borderWidth: 1,
-    width: "100%",
-    height: "100%",
-    alignItems: "center",
   },
 });
