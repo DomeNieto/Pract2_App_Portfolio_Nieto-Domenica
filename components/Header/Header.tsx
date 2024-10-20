@@ -1,26 +1,73 @@
-import { View, Text, StyleSheet, Button, Pressable } from "react-native";
+import React from "react";
+import { View, Text, StyleSheet, Pressable } from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { colors } from "../Color/Colors";
 
 type HeaderProps = {
   setDisplayMyQR: (value: boolean) => void;
+  darkMode: boolean;
+  setDarkMode: (value: boolean) => void;
 };
 
-const Header = ({ setDisplayMyQR }: HeaderProps) => {
+const Header = ({ setDisplayMyQR, darkMode, setDarkMode }: HeaderProps) => {
   return (
     <View style={styles.headerContainer}>
-      <Text style={styles.headerTitle}> My Portfolio App</Text>
-      <View style={styles.headerButtoms}>
-        <Pressable
-          style={styles.buttonruta}
-          onPress={() => setDisplayMyQR(true)}
+      <View style={styles.headerTitle}>
+        <Text
+          style={[
+            styles.headerText,
+            {
+              color: darkMode ? colors.lightText : colors.darkText,
+              backgroundColor: darkMode ? "#555" : colors.mediumGreen,
+            },
+          ]}
         >
-          <Text style={styles.shadoxboxing}>Mi info</Text>
+          {" "}
+          My Portfolio App
+        </Text>
+      </View>
+      <View style={styles.headerButtoms}>
+        <Pressable onPress={() => setDisplayMyQR(true)}>
+          <Text
+            style={[
+              styles.pressable,
+              {
+                color: darkMode ? colors.lightText : colors.darkText,
+                backgroundColor: darkMode ? "#555" : colors.lightGreen,
+              },
+            ]}
+          >
+            Mi info
+          </Text>
         </Pressable>
-        <Button
-          onPress={() => setDisplayMyQR(false)}
-          title="Mi Repo"
-          color="light-gray"
-          accessibilityLabel="Un botón pal QR"
-        />
+        <Pressable onPress={() => setDisplayMyQR(false)}>
+          <Text
+            style={[
+              styles.pressable,
+              {
+                color: darkMode ? colors.lightText : colors.darkText,
+                backgroundColor: darkMode ? "#555" : colors.lightGreen,
+              },
+            ]}
+          >
+            Mi Repo
+          </Text>
+        </Pressable>
+        <Pressable
+          onPress={() => setDarkMode(!darkMode)}
+          style={[
+            styles.pressable,
+            { backgroundColor: darkMode ? "#555" : colors.lightGreen },
+          ]}
+        >
+          <Ionicons
+            name={
+              darkMode ? "radio-button-off-outline" : "radio-button-on-outline"
+            }
+            color={darkMode ? "#FFF" : "black"}
+            size={24}
+          ></Ionicons>
+        </Pressable>
       </View>
     </View>
   );
@@ -28,12 +75,12 @@ const Header = ({ setDisplayMyQR }: HeaderProps) => {
 
 const styles = StyleSheet.create({
   headerContainer: {
-    height: 100,
-    paddingTop: 50,
+    height: "13%",
+    paddingTop: 30,
     width: "100%",
   },
-  headerTitle: {
-    backgroundColor: "gray",
+  headerTitle: {},
+  headerText: {
     textAlign: "center",
     fontWeight: "bold",
     textAlignVertical: "center",
@@ -41,17 +88,14 @@ const styles = StyleSheet.create({
   },
   headerButtoms: {
     flexDirection: "row",
-    backgroundColor: "darkgray",
-    justifyContent: "center",
+    justifyContent: "space-around",
     alignItems: "center",
+    padding: 5,
   },
   buttonruta: {
     width: "50%",
   },
   shadoxboxing: {
-    color: "white",
-    fontWeight: "bold",
-    textTransform: "uppercase",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -59,7 +103,20 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.43,
     shadowRadius: 9.51,
+
     elevation: 15,
+  },
+  pressable: {
+    width: 80,
+    height: 35,
+    textAlign: "center",
+    textAlignVertical: "center",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 4,
+    elevation: 15,
+    shadowOpacity: 1,
+    shadowRadius: 9.51,
   },
 });
 
