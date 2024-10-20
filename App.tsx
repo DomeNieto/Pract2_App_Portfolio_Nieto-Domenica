@@ -1,19 +1,33 @@
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
-import MyQRCode from "react-native-qrcode-svg";
+
 import Header from "./components/Header/Header";
 import PersonalInfo from "./components/PersonalInfo/PersonalInfo";
+import MyQRCode from "./components/MyQrCode/MyQrCode";
+
+import { colors } from "./components/Color/Colors";
 
 export default function App() {
   const [displayMyQR, setDisplayMyQR] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
+
   return (
-    <View style={styles.container}>
-      <View style={styles.headerContainer}>
-        <Header setDisplayMyQR={setDisplayMyQR} />
-      </View>
-      <View style={styles.contentContainer}>
-        {displayMyQR ? <PersonalInfo /> : <MyQRCode />}
-      </View>
+    <View
+      style={[
+        (styles.container,
+        { backgroundColor: darkMode ? "#333" : colors.softGreen }),
+      ]}
+    >
+      <Header
+        setDisplayMyQR={setDisplayMyQR}
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
+      />
+      {displayMyQR ? (
+        <PersonalInfo darkMode={darkMode} />
+      ) : (
+        <MyQRCode darkMode={darkMode} />
+      )}
     </View>
   );
 }
@@ -21,19 +35,5 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  headerContainer: {
-    height: 100,
-    width: "100%",
-    backgroundColor: "lightgray",
-  },
-  contentContainer: {
-    flex: 1,
-    width: "100%",
-    alignItems: "center",
-    justifyContent: "center",
   },
 });
