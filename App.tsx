@@ -22,7 +22,7 @@ export default function App() {
         darkMode={darkMode}
         setDarkMode={setDarkMode}
       />
-      {displayMyQR ? <PersonalInfo /> : <MyQRCode />}
+      {displayMyQR ? <PersonalInfo darkMode={darkMode} /> : <MyQRCode />}
     </View>
   );
 }

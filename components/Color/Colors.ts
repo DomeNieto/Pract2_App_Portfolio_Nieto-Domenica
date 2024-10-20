@@ -6,4 +6,5 @@ export const colors = {
   lightText: "#FFFFFF",
   darkText: "#000000",
   lightDark: "#555",
+  cardsDark: "#444",
 };
