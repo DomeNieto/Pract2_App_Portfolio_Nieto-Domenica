@@ -4,6 +4,7 @@ import { StyleSheet, View } from "react-native";
 import Header from "./components/Header/Header";
 import PersonalInfo from "./components/PersonalInfo/PersonalInfo";
 import MyQRCode from "./components/MyQrCode/MyQrCode";
+
 import { colors } from "./components/Color/Colors";
 
 export default function App() {
@@ -22,7 +23,11 @@ export default function App() {
         darkMode={darkMode}
         setDarkMode={setDarkMode}
       />
-      {displayMyQR ? <PersonalInfo darkMode={darkMode} /> : <MyQRCode />}
+      {displayMyQR ? (
+        <PersonalInfo darkMode={darkMode} />
+      ) : (
+        <MyQRCode darkMode={darkMode} />
+      )}
     </View>
   );
 }
