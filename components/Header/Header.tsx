@@ -18,7 +18,7 @@ const Header = ({ setDisplayMyQR, darkMode, setDarkMode }: HeaderProps) => {
             styles.headerText,
             {
               color: darkMode ? colors.lightText : colors.darkText,
-              backgroundColor: darkMode ? "#555" : colors.mediumGreen,
+              backgroundColor: darkMode ? colors.lightDark : colors.mediumGreen,
             },
           ]}
         >
@@ -33,7 +33,9 @@ const Header = ({ setDisplayMyQR, darkMode, setDarkMode }: HeaderProps) => {
               styles.pressable,
               {
                 color: darkMode ? colors.lightText : colors.darkText,
-                backgroundColor: darkMode ? "#555" : colors.lightGreen,
+                backgroundColor: darkMode
+                  ? colors.lightDark
+                  : colors.lightGreen,
               },
             ]}
           >
@@ -46,7 +48,9 @@ const Header = ({ setDisplayMyQR, darkMode, setDarkMode }: HeaderProps) => {
               styles.pressable,
               {
                 color: darkMode ? colors.lightText : colors.darkText,
-                backgroundColor: darkMode ? "#555" : colors.lightGreen,
+                backgroundColor: darkMode
+                  ? colors.lightDark
+                  : colors.lightGreen,
               },
             ]}
           >
@@ -64,7 +68,7 @@ const Header = ({ setDisplayMyQR, darkMode, setDarkMode }: HeaderProps) => {
             name={
               darkMode ? "radio-button-off-outline" : "radio-button-on-outline"
             }
-            color={darkMode ? "#FFF" : "black"}
+            color={darkMode ? colors.lightText : colors.darkText}
             size={24}
           ></Ionicons>
         </Pressable>
